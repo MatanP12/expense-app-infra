@@ -1,4 +1,3 @@
 .terraform
 .env
-providers.tf
 .terraform.lock*

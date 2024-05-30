@@ -10,10 +10,6 @@ variable "instance_type" {
   type = string
 }
 
-variable "instance_ami" {
-  type = string
-}
-
 variable "availability_zones" {
   type = list(string)
 }
@@ -26,11 +22,24 @@ variable "cidr_blocks" {
   type = list(string)
 }
 
-# variable "access_key" {
-#   type = string
-# }
+variable "argo_cd_version" {
+  type = string
 
-# variable "secret" {
-#   type = string
-  
-# }
+}
+
+variable "argo_namespace" {
+  type = string
+}
+
+variable "desired_size" {
+  type = number
+}
+
+
+variable "min_size" {
+  type = number
+}
+
+variable "max_size" {
+  type = number
+}

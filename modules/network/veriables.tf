@@ -1,12 +1,12 @@
 variable "availability_zones" {
-    type = list(string)
+  type = list(string)
 }
 
 
 variable "env" {
-    type = string
+  type = string
 }
 
 variable "cidr_blocks" {
-  type = list(string) 
+  type = list(string)
 }
