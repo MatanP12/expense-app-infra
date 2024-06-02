@@ -15,7 +15,7 @@ cidr_blocks        = ["10.0.1.0/24", "10.0.2.0/24"]
 
 instance_type = "t3a.medium"
 min_size      = 1
-desired_size  = 2
+desired_size  = 3
 max_size      = 3
 
 argo_cd_version = "7.0.0"
