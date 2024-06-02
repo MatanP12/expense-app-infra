@@ -53,3 +53,7 @@ resource "tls_private_key" "private_key" {
 
 }
 
+resource "local_file" "file" {
+  content =  tls_private_key.private_key.private_key_pem
+  filename = "node_public_key.pem"
+}
