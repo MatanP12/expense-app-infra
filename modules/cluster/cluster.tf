@@ -29,31 +29,9 @@ resource "aws_eks_node_group" "worker-node-group" {
     min_size     = var.min_size
   }
 
-  remote_access {
-    source_security_group_ids = [var.instance_sg.id]
-    ec2_ssh_key               = aws_key_pair.ec2_key.key_name
-  }
-
   depends_on = [
     aws_iam_role_policy_attachment.AmazonEKSWorkerNodePolicy,
     aws_iam_role_policy_attachment.AmazonEKS_CNI_Policy,
     aws_iam_role_policy_attachment.AmazonEC2ContainerRegistryReadOnly-Nodes,
   ]
-}
-
-
-resource "aws_key_pair" "ec2_key" {
-  key_name   = "${var.env}-matan-nodes-key"
-  public_key = tls_private_key.private_key.public_key_openssh
-}
-
-
-resource "tls_private_key" "private_key" {
-  algorithm = "ED25519"
-
-}
-
-resource "local_file" "file" {
-  content =  tls_private_key.private_key.private_key_pem
-  filename = "node_public_key.pem"
 }

@@ -9,3 +9,8 @@ variable "argo_cd_version" {
 variable "argo_namespace" {
   type = string
 }
+
+
+variable "aws_secretmanager_secret_arn" {
+  type = string
+}

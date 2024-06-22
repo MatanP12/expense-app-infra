@@ -18,7 +18,11 @@ variable "env" {
   type = string
 }
 
-variable "cidr_blocks" {
+variable "cidr_blocks_public_subnets" {
+  type = list(string)
+}
+
+variable "cidr_blocks_private_subnets" {
   type = list(string)
 }
 
@@ -42,4 +46,8 @@ variable "min_size" {
 
 variable "max_size" {
   type = number
+}
+
+variable "aws_secretmanager_secret_arn" {
+  type = string
 }

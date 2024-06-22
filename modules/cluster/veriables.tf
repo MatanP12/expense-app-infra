@@ -14,10 +14,6 @@ variable "vpc_id" {
   type = string
 }
 
-variable "instance_sg" {
-
-}
-
 
 variable "availability_zones" {
   type = list(string)
