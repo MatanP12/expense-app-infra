@@ -18,14 +18,6 @@ variable "env" {
   type = string
 }
 
-variable "cidr_blocks_public_subnets" {
-  type = list(string)
-}
-
-variable "cidr_blocks_private_subnets" {
-  type = list(string)
-}
-
 variable "argo_cd_version" {
   type = string
 

@@ -16,7 +16,7 @@ resource "aws_internet_gateway" "igw" {
 resource "aws_subnet" "public_subnets" {
   count                   = 2
   vpc_id                  = aws_vpc.matan-terraform-vpc.id
-  cidr_block              = var.cidr_blocks_public_subnets[count.index]
+  cidr_block              = cidrsubnet(aws_vpc.matan-terraform-vpc.cidr_block, 8, count.index)
   availability_zone       = var.availability_zones[count.index]
   map_public_ip_on_launch = true
   tags                    = { Name = "${var.env}-matan-public-subnet-${count.index}" }
@@ -60,7 +60,7 @@ resource "aws_nat_gateway" "nat_gateways" {
 resource "aws_subnet" "private_subnets" {
   count = 2
   vpc_id = aws_vpc.matan-terraform-vpc.id
-  cidr_block = var.cidr_blocks_private_subnets[count.index]
+  cidr_block = cidrsubnet(aws_vpc.matan-terraform-vpc.cidr_block, 8, length(aws_subnet.public_subnets)+count.index)
   availability_zone = var.availability_zones[count.index]
   map_public_ip_on_launch = false
   tags = { Name = "${var.env}-matan-private-subnet-${count.index}" }
