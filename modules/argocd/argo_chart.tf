@@ -8,11 +8,11 @@ resource "helm_release" "argo_release" {
 
   set {
     name = "configs.repositories[0].url"
-    value = jsondecode(data.aws_secretsmanager_secret_version.gitlab_creds.secret_string)["repo-url"]
+    value = jsondecode(data.aws_secretsmanager_secret_version.gitlab_creds.secret_string)["repository"]
   }
   set {
     name = "configs.repositories[0].sshPrivateKey"
-    value =  jsondecode(data.aws_secretsmanager_secret_version.gitlab_creds.secret_string)["ssh-key"]
+    value =  jsondecode(data.aws_secretsmanager_secret_version.gitlab_creds.secret_string)["deploy_key"]
   }
   set {
     name = "configs.repositories[0].type"

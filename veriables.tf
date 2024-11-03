@@ -40,6 +40,23 @@ variable "max_size" {
   type = number
 }
 
-variable "aws_secretmanager_secret_arn" {
+variable "repository_owner" {
+  type = string
+}
+
+variable "repository_name" {
+  type = string
+}
+
+variable "deploy_key_name" {
+  type = string
+}
+
+variable "access_token" {
+  type = string
+  sensitive = true
+}
+
+variable "secret_name" {
   type = string
 }

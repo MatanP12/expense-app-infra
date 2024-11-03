@@ -18,11 +18,29 @@ module "cluster" {
   desired_size       = var.desired_size
 }
 
+module "aws_secret" {
+  source = "./modules/aws_secret"
+  depends_on = [ module.github_deploy_key ]
+  repository_ssh = module.github_deploy_key.repository_ssh_url
+  env = var.env
+  deploy_key = module.github_deploy_key.deploy_key
+  secret_name = var.secret_name
+}
+
+
 module "argocd" {
   source          = "./modules/argocd"
+  depends_on = [ module.github_deploy_key ]
   env             = var.env
   argo_cd_version = var.argo_cd_version
   argo_namespace  = var.argo_namespace
-  aws_secretmanager_secret_arn = var.aws_secretmanager_secret_arn
+  aws_secretmanager_secret_arn = module.aws_secret.aws_secretmanager_secret_arn
 }
 
+module "github_deploy_key" {
+  source = "./modules/github_deploykey"
+  repository_name = var.repository_name
+  repository_owner = var.repository_owner
+  env = var.env
+  deploy_key_name = var.deploy_key_name
+}

@@ -13,4 +13,5 @@ variable "argo_namespace" {
 
 variable "aws_secretmanager_secret_arn" {
   type = string
+  sensitive = true
 }

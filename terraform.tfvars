@@ -7,8 +7,8 @@ tags = {
 
 env = "protfolio"
 
-region = "ap-south-1"
 
+region = "ap-south-1"
 availability_zones = ["ap-south-1a", "ap-south-1b"]
 
 
@@ -20,4 +20,8 @@ max_size      = 3
 argo_cd_version = "7.0.0"
 argo_namespace  = "argo"
 
-aws_secretmanager_secret_arn = "YOUR_SECRET_ARN"
+repository_name = "expense-app-gitops"
+repository_owner = "MatanP12"
+deploy_key_name = "gitops-deploy-key"
+
+secret_name = "gitops-secret"

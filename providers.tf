@@ -16,14 +16,9 @@ terraform {
   }
 
 
-  backend "s3" {
-    bucket = "matan-bucket"
-    key    = "terraform.state"
-    region = "ap-south-1"
+  backend "local" {
   }
 }
-
-
 
 provider "aws" {
   region = "ap-south-1"
@@ -54,4 +49,8 @@ provider "helm" {
       command     = "aws"
     }
   }
+}
+
+provider "github" {
+  token = var.access_token
 }

@@ -1,3 +1,7 @@
 .terraform
 .env
 .terraform.lock*
+
+.terra*
+
+terraform.tfstate*
