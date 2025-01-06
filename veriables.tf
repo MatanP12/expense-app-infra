@@ -20,7 +20,6 @@ variable "env" {
 
 variable "argo_cd_version" {
   type = string
-
 }
 
 variable "argo_namespace" {
@@ -59,4 +58,16 @@ variable "access_token" {
 
 variable "secret_name" {
   type = string
+}
+
+variable "cidr_block" {
+  type = string
+}
+
+variable "num_of_subnets" {
+  type = number
+}
+
+variable "allow_private_subnets" {
+  type = bool
 }

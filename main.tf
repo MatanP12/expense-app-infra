@@ -3,6 +3,9 @@ module "network" {
   source             = "./modules/network"
   availability_zones = var.availability_zones
   env                = var.env
+  cidr_block = var.cidr_block
+  num_of_subnets = var.num_of_subnets
+  allow_private_subnets = true
 }
 
 module "cluster" {
